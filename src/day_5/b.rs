@@ -151,7 +151,7 @@ impl fmt::Display for Diagram {
 
 pub fn find_overlapping_points(file_path: PathBuf) -> u32 {
     let mut diagram = Diagram {
-        counts: vec![vec![0; 1000]; 1000],
+        counts: vec![vec![0; 10]; 10],
     };
 
     BufReader::new(File::open(file_path).unwrap())
@@ -159,7 +159,7 @@ pub fn find_overlapping_points(file_path: PathBuf) -> u32 {
         .map(|line| Vector::from_str(line.as_ref().unwrap()).unwrap())
         .for_each(|v| diagram.count_points_from_vector(v));
 
-    println!("{}", diagram);
+    // println!("{}", diagram);
 
     diagram.get_number_of_dangerous_areas() as u32
 }
@@ -172,7 +172,7 @@ mod tests {
     #[test]
     fn test_data() {
         let mut d = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-        d.push("src/day_5/input.txt");
-        assert_eq!(find_overlapping_points(d.to_owned()), 13);
+        d.push("src/day_5/input_test.txt");
+        assert_eq!(find_overlapping_points(d.to_owned()), 12);
     }
 }
