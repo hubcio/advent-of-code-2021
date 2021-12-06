@@ -1,9 +1,5 @@
-use std::collections::VecDeque;
-use std::fmt::{self};
 use std::fs;
-use std::io::{BufRead, BufReader};
 use std::path::PathBuf;
-use std::str::FromStr;
 
 type FishCounter = [usize; 9];
 
