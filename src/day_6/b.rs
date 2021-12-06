@@ -13,9 +13,7 @@ pub fn find_fish_amount(file_path: PathBuf, days: usize) -> usize {
         .unwrap()
         .split(',')
         .map(|x| x.parse::<usize>().unwrap())
-        .collect::<Vec<usize>>()
-        .iter()
-        .for_each(|&u| f[u] += 1);
+        .for_each(|u| f[u] += 1);
 
     for _ in 0..days {
         let zero_day_fish = f[0];
