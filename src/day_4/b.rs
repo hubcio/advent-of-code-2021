@@ -2,7 +2,6 @@ use std::collections::VecDeque;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::path::PathBuf;
-use std::str::FromStr;
 
 #[derive(Copy, Clone, Default, Debug)]
 struct Number {

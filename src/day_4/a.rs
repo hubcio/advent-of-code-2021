@@ -2,7 +2,6 @@ use std::collections::VecDeque;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::path::PathBuf;
-use std::str::FromStr;
 
 #[derive(Copy, Clone, Default, Debug)]
 struct Number {
@@ -14,20 +13,6 @@ struct Number {
 struct Board {
     rows: [[Number; 5]; 5],
     sum_of_non_marked_elements: u32,
-}
-
-impl Board {
-    fn get_sum_of_non_marked_elements(&mut self) -> u32 {
-        let mut sum = 0;
-        for x in 0..5 {
-            for y in 0..5 {
-                if !self.rows[x][y].is_marked {
-                    sum += self.rows[x][y].value;
-                }
-            }
-        }
-        sum
-    }
 }
 
 pub fn find_winner(file_path: PathBuf) -> u32 {
@@ -71,7 +56,6 @@ pub fn find_winner(file_path: PathBuf) -> u32 {
         }
     }
 
-    let finished = false;
     for number_to_mark in numbers_to_mark {
         for board in &mut boards {
             for row in &mut board.rows {
@@ -97,10 +81,6 @@ pub fn find_winner(file_path: PathBuf) -> u32 {
                             return board.sum_of_non_marked_elements * row[position.unwrap()].value;
                         }
                     }
-                    numbers_marked = 0;
-
-                    // check if whole column is marked
-                    for i in 0..5 {}
                 }
             }
         }
